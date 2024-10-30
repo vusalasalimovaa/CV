@@ -1,0 +1,124 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.center {
+  --head-from-color: #34d399;
+  --head-to-color: #f9e049;
+  --body-color: #413d3d;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: radial-gradient(var(--body-color), #000 80%);
+
+  &:has(.col:nth-child(1):hover) {
+    --head-from-color: #ef4444;
+    --head-to-color: #fec6c6;
+    --body-color: #281b1b;
+  }
+
+  &:has(.col:nth-child(2):hover) {
+    --head-from-color: #f97316;
+    --head-to-color: #fdce9d;
+    --body-color: #3b2c25;
+  }
+
+  &:has(.col:nth-child(3):hover) {
+    --head-from-color: #a855f7;
+    --head-to-color: #e4caff;
+    --body-color: #2a2235;
+  }
+
+  h1 {
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--head-from-color),
+      var(--head-to-color)
+    );
+    font-size: 90px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+
+  .col {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 35px 20px;
+    gap: 5px;
+    cursor: pointer;
+    transition: 230ms all;
+
+    &:first-child {
+      border-radius: 40px 5px 5px 40px;
+    }
+
+    &:last-child {
+      border-radius: 5px 40px 40px 5px;
+    }
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    h6 {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    button {
+      height: 40px;
+      background: #fff;
+      padding: 0 25px;
+      font-size: 16px;
+      border-radius: 20px;
+      margin-top: 10px;
+      transition: 230ms all;
+    }
+
+    /* &:nth-child(1):hover{
+        background-color: red;
+    } */
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      button {
+        background: var(--head-from-color);
+      }
+    }
+  }
+
+  &:has(.col:hover) .col:not(:hover) button {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+}
